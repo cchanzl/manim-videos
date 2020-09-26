@@ -152,9 +152,8 @@ class OpeningScene2(Scene):
         for y in tri:
             ny = ny + 1
             for x in range(-5, -5+ny):
-                vector=np.array([x,y,0])           #x, y, z
                 rectangle = Rectangle(height=0.5, width=1, stroke_opacity = 0.15)
-                rectangle.move_to(vector)
+                rectangle.move_to(np.array([x,y,0])   )
                 list.append(rectangle)
         triangle = VGroup(*list)
         self.play(FadeIn(triangle))
@@ -214,9 +213,8 @@ class life_cycle(Scene):
         self.wait(1)
 
         year = TextMobject("Calendar Year")
-        year_pos = np.array([-4.5, 3.73, 0])  # x, y, z
         year.scale(0.5)
-        year.move_to(year_pos)
+        year.move_to(np.array([-4.5, 3.73, 0]))
         self.play(FadeIn(year))
 
         listx =[]
@@ -231,9 +229,8 @@ class life_cycle(Scene):
 
         listx = []
         for x in range(-5, 5):
-            vector = np.array([x, 2.75, 0])  # x, y, z
             rectangle = Rectangle(height=0.5, width=1)
-            rectangle.move_to(vector)
+            rectangle.move_to(np.array([x, 2.75, 0]))
             listx.append(rectangle)
         triangle = VGroup(*listx)
         self.play(FadeIn(triangle))
@@ -264,18 +261,16 @@ class life_cycle(Scene):
         self.play(Write(txt_09))
         self.wait(2)
 
-        vector1 = np.array([-4, 2.75, 0])  # x, y, z
         clm2 = TextMobject(str(clm_list1[1]))
-        clm2.move_to(vector1)
+        clm2.move_to(np.array([-4, 2.75, 0]))
         clm2.scale(0.7)
         self.play(FadeIn(clm2))
         self.wait(3)
 
         listx =[]
         for x, clm in zip(range(-3, 5), clm_list1[2:]):
-            vector = np.array([x, 2.75, 0])  # x, y, z
             txt = TextMobject(str(clm))
-            txt.move_to(vector)
+            txt.move_to(np.array([x, 2.75, 0]))
             txt.scale(0.7)
             listx.append(txt)
         clm3 = VGroup(*listx)
@@ -283,8 +278,7 @@ class life_cycle(Scene):
         self.wait(1)
 
         arrow2 = Arrow(UP, DOWN*2) # specify the location of the two ends.
-        a_vec2 = np.array([-1, 1, 0])  # x, y, z
-        arrow2.move_to(a_vec2)
+        arrow2.move_to(np.array([-1, 1, 0]))
         arrow2.align_to(arrow1, UP) # top edge lines ups with arrow1's top edge.
         self.play(GrowArrow(arrow2))
 
@@ -300,8 +294,7 @@ class life_cycle(Scene):
         self.wait(2)
 
         arrow3 = Arrow(UP, DOWN*3.5) # specify the location of the two ends.
-        a_vec3 = np.array([4, 0.6, 0])  # x, y, z
-        arrow3.move_to(a_vec3)
+        arrow3.move_to(np.array([4, 0.6, 0]))
         arrow3.align_to(arrow2, UP)
         self.play(GrowArrow(arrow3))
         self.wait(2)
@@ -326,9 +319,8 @@ class life_cycle(Scene):
 
         listx = []
         for x in range(-5, 5):
-            vector = np.array([x, 0.9, 0])  # x, y, z
             rectangle = Rectangle(height=0.5, width=1)
-            rectangle.move_to(vector)
+            rectangle.move_to(np.array([x, 0.9, 0]))
             listx.append(rectangle)
         row2 = VGroup(*listx)
         self.play(FadeIn(row2), FadeIn(txt1))
@@ -336,9 +328,8 @@ class life_cycle(Scene):
 
         listx =[]
         for x, clm in zip(range(-5, 5), clm_list2):
-            vector = np.array([x, 0.9, 0])  # x, y, z
             txt = TextMobject(str(clm))
-            txt.move_to(vector)
+            txt.move_to(np.array([x, 0.9, 0]))
             txt.scale(0.7)
             listx.append(txt)
         claims2 = VGroup(*listx) # For policy #2
@@ -347,9 +338,8 @@ class life_cycle(Scene):
 
         listx = []
         for x, clm in zip(range(-5, 5), clm_list1):
-            vector = np.array([x, 2.75, 0])  # x, y, z
             txt = TextMobject(str(clm))
-            txt.move_to(vector)
+            txt.move_to(np.array([x, 2.75, 0]))
             txt.scale(0.7)
             listx.append(txt)
         claims1 = VGroup(*listx) # For policy #1
@@ -361,9 +351,8 @@ class life_cycle(Scene):
         listx = []
         claims_top = [a + b for a, b in zip((int(i) for i in clm_list1), (int(i) for i in clm_list2))]
         for x, clm in zip(range(-5, 5), claims_top):
-            vector = np.array([x, 2.75, 0])  # x, y, z
             txt = TextMobject(str(clm))
-            txt.move_to(vector)
+            txt.move_to(np.array([x, 2.75, 0]))
             txt.scale(0.7)
             listx.append(txt)
         claims_sum = VGroup(*listx) # For policy #1
@@ -379,9 +368,8 @@ class life_cycle(Scene):
 
             listx = []
             for x, clm in zip(range(-5, 5), lines[pol].split(",")):
-                vector = np.array([x, 0.9, 0])  # x, y, z
                 txt = TextMobject(str(clm))
-                txt.move_to(vector)
+                txt.move_to(np.array([x, 0.9, 0]))
                 txt.scale(0.7)
                 listx.append(txt)
             claims_rand = VGroup(*listx)  # For policy #3 onwards
